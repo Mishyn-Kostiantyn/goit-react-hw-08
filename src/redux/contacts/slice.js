@@ -2,8 +2,9 @@
 
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
-import { fetchContacts, addContact, deleteContact } from "./contactsOps";
-import { selectContacts, selectNameFilter  } from "./selectors";
+import { fetchContacts, addContact, deleteContact } from "./operations";
+import { selectContacts } from "./selectors";
+import { selectNameFilter } from "../filter/selectors";
 
 
 // https://6622926227fcd16fa6ca3c04.mockapi.io/contacts

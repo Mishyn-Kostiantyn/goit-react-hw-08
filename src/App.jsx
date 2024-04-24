@@ -5,9 +5,9 @@ import ContactList from './components/ContactList/ContactList';
 import SearchBox from './components/SearchBox/SearchBox';
 import Loader from './components/Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from './redux/selectors';
+import { selectError, selectIsLoading } from './redux/contacts/selectors.js';
 import { useEffect } from 'react';
-import { fetchContacts } from './redux/contactsOps';
+import { fetchContacts } from './redux/contacts/operations';
 function App() {
   const dispatch = useDispatch();
   const loading = useSelector(selectIsLoading);
