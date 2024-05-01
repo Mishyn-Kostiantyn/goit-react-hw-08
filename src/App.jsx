@@ -1,7 +1,7 @@
 
 import './App.css'
 import HomePage from './pages/HomePage';
-import ContactsPage from './pages/ContactsPage';
+
 import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
@@ -16,6 +16,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 
 
 function App() {
+  const ContactsPage = lazy(() => import('./pages/ContactsPage.jsx'));
   const dispatch = useDispatch();
   useEffect(() => {dispatch(refreshUser())
     
