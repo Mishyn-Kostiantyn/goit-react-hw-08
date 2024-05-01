@@ -10,12 +10,6 @@ export const clearToken = () => { instance.defaults.headers.common.Authorization
 export const register = createAsyncThunk("auth/register", async (formData, thunkApi) => { 
     try {
         const { data } = await instance.post("/users/signup", formData);
-        console.log(data);
-       /* {"user":
-            { "name": "forапк",
-              "email": "port@fopr.pod"},
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjMyMWIxZDczNmQ3YTAwMTRjODkwMzIiLCJpYXQiOjE3MTQ1NTk3NzN9.mfDnBOSxyLaNh5Zll7gdxIZPtfCH2eEDKUYm2bCkJcY"
-}*/
         setToken(data.token);
         toast.success(`Welcome, ${data.user.name}!. You are successfully registered. Continue with your Contacts page!`, {
   autoClose: 5000
@@ -31,7 +25,6 @@ return data;
 export const login = createAsyncThunk("auth/login", async (formData, thunkApi) => {
     try {
         const { data } = await instance.post("/users/login", formData);
-        console.log("Login data:", data);
         setToken(data.token);
         toast.success(`Welcome, ${data.user.name}!. You are successfully logged in. Continue with your Contacts page!`, {
             autoClose: 5000
@@ -50,8 +43,7 @@ export const refreshUser = createAsyncThunk("auth/refresh", async (_, thunkApi) 
         const token = state.auth.token;
         setToken(token);
         const { data } = await instance.get("/users/current");
-        console.log("refresh:", data);
-      
+        
         toast.success(`Welcome, ${data.name}!. You are successfully logged in. Continue with your Contacts page!`, {
             autoClose: 5000
         });
@@ -69,7 +61,7 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
         const token = state.auth.token;
         setToken(token);
         const { data } = await instance.post("/users/logout");
-        console.log("logout:", data);
+        
       
         toast.success("You are successfully logged out!", {
   autoClose: 5000
