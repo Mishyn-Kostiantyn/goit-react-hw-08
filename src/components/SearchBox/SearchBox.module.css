@@ -9,6 +9,7 @@
   margin-bottom: 25px;
 }
 .searchBoxInput {
+  padding: 10px;
   border: none;
   background: rgba(214, 232, 213, 0.644);
   display: block;

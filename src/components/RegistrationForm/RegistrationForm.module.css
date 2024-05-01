@@ -6,10 +6,10 @@
   gap: 20px;
   width: 350px;
   padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 25px;
   border: solid 2px rgba(37, 111, 35, 0.644);
   border-radius: 8px;
-  margin-top: 15px;
-  margin-bottom: 25px;
 }
 .formLabel input {
   border: none;

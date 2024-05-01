@@ -12,7 +12,7 @@ function ContactForm() {
   const MIN_DIGITS_PHONE_VALIDATION = 6;
   const contactFormSchema = Yup.object({
   name: Yup.string().required("Username is required!").defined().min(MIN_CHAR_NAME_VALIDATION,`Minimum ${MIN_CHAR_NAME_VALIDATION} characters required!`).max(MAX_CHAR_NAME_VALIDATION,`Your username must be less or equal ${MAX_CHAR_NAME_VALIDATION} characters!`),
-  number: Yup.string().required("Your phone number is required!").default('').nullable().matches(/^[\d\s-]+$/, "Phone number must contain only digits, spaces, or dashes!").min(MIN_DIGITS_PHONE_VALIDATION,`To short!`),
+  number: Yup.string().required("Your phone number is required!").default('').nullable().matches(/^[\d\s-+]+$/, "Phone number must contain only digits, spaces, dashes, or plus signs!").min(MIN_DIGITS_PHONE_VALIDATION,`To short!`),
  });
   const FORM_INITIAL_VALUES = {
     name: "",

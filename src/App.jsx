@@ -1,29 +1,41 @@
 
 import './App.css'
-import ContactForm from './components/ContactForm/ContactForm';
-import ContactList from './components/ContactList/ContactList';
-import SearchBox from './components/SearchBox/SearchBox';
-import Loader from './components/Loader/Loader';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from './redux/contacts/selectors.js';
-import { useEffect } from 'react';
-import { fetchContacts } from './redux/contacts/operations';
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
+import LoginPage from './pages/LoginPage';
+import RegistrationPage from './pages/RegistrationPage';
+import Layout  from './components/Layout/Layout.jsx';
+import { Toaster } from 'react-hot-toast';
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect,lazy } from 'react';
+import { refreshUser } from './redux/auth/operations.js';
+import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute.jsx';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
+
+
 function App() {
   const dispatch = useDispatch();
-  const loading = useSelector(selectIsLoading);
-  const isError = useSelector(selectError);
-  useEffect (() => {dispatch(fetchContacts())
+  useEffect(() => {dispatch(refreshUser())
     
-  },[dispatch])
+  }, [dispatch])
+  const ContactsPage = lazy(() => import('./pages/ContactsPage.jsx'))
+  
   return (
     <>
-      <div className='container'>
-      <h1>Phonebook</h1>
-      <ContactForm />
-        <SearchBox />
-         {loading && !isError&&<Loader/>}
-      <ContactList />
-    </div>
+      <Layout>
+        
+       <Toaster position="top-center" reverseOrder={true} />
+         <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/register' element={<RestrictedRoute><RegistrationPage/></RestrictedRoute> }/>
+          <Route path='/login' element={<RestrictedRoute><LoginPage /></RestrictedRoute>} />
+          <Route path='/contacts' element={<PrivateRoute><ContactsPage /></PrivateRoute>} /> 
+          <Route path='*' element={<NotFoundPage />} />
+          
+    </Routes>
+        
+        </Layout>
       
     </>
   )

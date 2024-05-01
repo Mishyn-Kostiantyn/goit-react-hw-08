@@ -8,8 +8,8 @@
   padding: 15px;
   border: solid 2px rgba(37, 111, 35, 0.644);
   border-radius: 8px;
-  margin-top: 15px;
   margin-bottom: 25px;
+  margin-top: 10px;
 }
 .formLabel input {
   border: none;
