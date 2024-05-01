@@ -6,7 +6,7 @@ import { selectToken } from '../auth/selectors';
 
 
 export const fetchContacts = createAsyncThunk('contacts/fetchAll',
-    async (_, thunkAPI) => {
+    async (_, thunkApi) => {
         try {
         
     
@@ -15,24 +15,24 @@ export const fetchContacts = createAsyncThunk('contacts/fetchAll',
             return response.data;
         
         } catch (error) {
-            return thunkAPI.rejectWithValue(error.message)
+            return thunkApi.rejectWithValue(error.message)
         
         }
     });
-export const addContact = createAsyncThunk('contacts/addContact', async (contact, thunkAPI) => {
+export const addContact = createAsyncThunk('contacts/addContact', async (contact, thunkApi) => {
     try {
        
         const response = await instance.post('/contacts', contact); return response.data
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.message)
+        return thunkApi.rejectWithValue(error.message)
     }
 });
-export const deleteContact = createAsyncThunk('contacts/deleteContact', async (contactId, thunkAPI) => {
+export const deleteContact = createAsyncThunk('contacts/deleteContact', async (contactId, thunkApi) => {
     try {
         
         const response = await instance.delete(`/contacts/${contactId}`); return response.data
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.message)
+        return thunkApi.rejectWithValue(error.message)
         
     }
     
