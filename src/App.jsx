@@ -1,6 +1,7 @@
 
 import './App.css'
 import HomePage from './pages/HomePage';
+import ContactsPage from './pages/ContactsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
@@ -19,7 +20,7 @@ function App() {
   useEffect(() => {dispatch(refreshUser())
     
   }, [dispatch])
-  const ContactsPage = lazy(() => import('./pages/ContactsPage.jsx'))
+
   
   return (
     <>
